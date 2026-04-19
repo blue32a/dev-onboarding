@@ -15,6 +15,12 @@
 
 `index.html` を Live Server で開き、`utils.js` と `main.js` にコードを書きながら進めます。
 
+**ES Modules について**
+
+ES Modules（ESM）はJavaScriptの標準モジュール仕様です。`export` でファイルの外に公開し、`import` で取り込みます。以前は `require()` / `module.exports`（CommonJS）という仕様が広く使われていましたが、現在はブラウザ・Node.jsともにES Modulesが標準です。
+
+ブラウザでES Modulesを使うには `<script type="module">` が必要です（`index.html` には設定済みです）。また、`file://` プロトコル（ファイルを直接開く）では動作しないため、Live Serverを使って `http://localhost` 経由で配信する必要があります。
+
 ### 1. ファイルを分割して責務ごとにコードを管理できるようにする
 
 1つのファイルにすべての処理を書いていると、ファイルが長くなるにつれて見通しが悪くなります。`export` をつけることで、そのファイルの外からも使える関数や定数を定義できます。責務ごとにファイルを分けることで、それぞれが何をするファイルかが明確になります。
@@ -33,19 +39,17 @@ export function formatPrice(price) {
 
 `export` しただけでは他のファイルから使えません。`import` することで、分割したファイルの関数や定数を呼び出せるようになります。`import` では `{}` の中に使いたい名前を列挙します（named import）。
 
-ES Modules を使うには、HTMLの `<script>` タグに `type="module"` が必要です（`index.html` には設定済みです）。
-
 `main.js` に以下を書き、ページに価格が表示されることを確認します。
 
 ```javascript
 import { formatPrice, TAX_RATE } from "./utils.js";
 
 const price = 1980;
-const tax   = price * TAX_RATE;
+const tax = price * TAX_RATE;
 const total = price + tax;
 
 document.querySelector("#price").textContent = formatPrice(price);
-document.querySelector("#tax").textContent   = formatPrice(tax);
+document.querySelector("#tax").textContent = formatPrice(tax);
 document.querySelector("#total").textContent = formatPrice(total);
 ```
 
@@ -86,10 +90,10 @@ console.log(greet("Alice"));
 
 このステップでは以下を学びました。
 
+- ES Modules は `export` / `import` でファイル間のコード共有を実現するJavaScriptの標準仕様
 - `export` で関数・定数を他のファイルから使えるようにできる
 - `import { ... } from` で named export を取り込める
 - `export default` でファイルの主役を定義し、import 側で自由に名前をつけられる
-- ES Modules を使うには `<script type="module">` が必要
 
 **次のステップ:** JavaScriptの全ステップはここで完了です。
 
