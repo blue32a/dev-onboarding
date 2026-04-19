@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>06 DOMイベント</title>
+</head>
+<body>
+  <h1>DOMイベント</h1>
+
+  <section>
+    <h2>カウンター</h2>
+    <button id="increment-btn">+1</button>
+    <p>クリック数: <span id="count">0</span></p>
+  </section>
+
+  <section>
+    <h2>テキスト入力</h2>
+    <input type="text" id="name-input" placeholder="名前を入力">
+    <p>入力中: <span id="input-display"></span></p>
+  </section>
+
+  <section>
+    <h2>フォーム送信</h2>
+    <form id="search-form">
+      <input type="text" id="search-input" placeholder="検索ワード">
+      <button type="submit">検索</button>
+    </form>
+    <p id="search-result"></p>
+  </section>
+
+  <script src="main.js"></script>
+</body>
+</html>
