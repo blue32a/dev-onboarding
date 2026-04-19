@@ -18,6 +18,8 @@
 
 `fetch(url)` はHTTPリクエストを送り、Promiseを返します。`async/await` と組み合わせて使います。レスポンスの取得は2段階になっており、1回目の `await` でHTTPレスポンス（ヘッダー）を受け取り、2回目の `await response.json()` でボディをJavaScriptオブジェクトに変換します。
 
+このステップでは [JSONPlaceholder](https://jsonplaceholder.typicode.com/) を使います。JSONPlaceholderはテスト・学習用のフェイクREST APIで、ユーザー・投稿・コメントなどのダミーデータを返します。登録不要で使えます。
+
 ```javascript
 const btn = document.querySelector("#fetch-btn");
 
@@ -80,7 +82,7 @@ console.log(typeof parsed); // "object"
 - `response.json()` でレスポンスのボディをオブジェクトに変換できる
 - `JSON.stringify()` / `JSON.parse()` でオブジェクトとJSON文字列を相互変換できる
 
-**次のステップ:** [09 エラーハンドリング](../09-error-handling/) では、通信の失敗など予期しないエラーが発生したときにアプリを止めずに処理する方法を学びます。
+**次のステップ:** [09 エラーハンドリング](../09-error-handling/README.md) では、通信の失敗など予期しないエラーが発生したときにアプリを止めずに処理する方法を学びます。
 
 ## 一次情報・参考資料
 

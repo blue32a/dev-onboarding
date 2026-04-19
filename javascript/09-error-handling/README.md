@@ -43,6 +43,8 @@ console.log("ここは実行される");
 
 `async` 関数ごと `try / catch` で囲むと、`await` 内で発生したエラーも捕捉できます。`fetch()` 自体はネットワークエラーでしか失敗しません。HTTPエラー（404・500など）は `response.ok` で確認し、`throw new Error()` で意図的にエラーを発生させることで `catch` に流せます。
 
+失敗用のURLには [httpbin.org](https://httpbin.org/) を使います。httpbin.orgはHTTPリクエスト・レスポンスのテスト用サービスで、`/status/404` のようにURLでステータスコードを指定してレスポンスを返せます。
+
 ```javascript
 const result = document.querySelector("#result");
 
@@ -65,7 +67,7 @@ document.querySelector("#success-btn").addEventListener("click", () => {
 });
 
 document.querySelector("#fail-btn").addEventListener("click", () => {
-  fetchUser("https://jsonplaceholder.typicode.com/users/0");
+  fetchUser("https://httpbin.org/status/404");
 });
 ```
 
@@ -75,11 +77,23 @@ document.querySelector("#fail-btn").addEventListener("click", () => {
 
 ローディング中の表示やリソースの解放など、結果にかかわらず必ず実行すべき処理があります。`finally` ブロックは `try` が成功しても `catch` に入っても必ず実行されます。`try` と `catch` それぞれに同じ処理を重複して書く必要がなくなります。
 
-`fetchUser` に `finally` を追加します。
+`fetchUser` を `finally` を含む完全な形に書き換えます。
 
 ```javascript
-} finally {
-  console.log("fetchUser 終了");
+async function fetchUser(url) {
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`HTTPエラー: ${response.status}`);
+    }
+    const user = await response.json();
+    result.textContent = `取得成功: ${user.name}`;
+  } catch (e) {
+    result.textContent = `エラー: ${e.message}`;
+    console.error(e);
+  } finally {
+    console.log("fetchUser 終了");
+  }
 }
 ```
 
@@ -95,7 +109,7 @@ document.querySelector("#fail-btn").addEventListener("click", () => {
 - `throw new Error()` で意図的にエラーを発生させ `catch` に流せる
 - `finally` で成功・失敗に関わらず後処理を確実に実行できる
 
-**次のステップ:** [10 モジュール](../10-modules/) では、コードを複数のファイルに分割して管理しやすくする方法を学びます。
+**次のステップ:** [10 モジュール](../10-modules/README.md) では、コードを複数のファイルに分割して管理しやすくする方法を学びます。
 
 ## 一次情報・参考資料
 
