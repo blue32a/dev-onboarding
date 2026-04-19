@@ -1,6 +1,6 @@
 # モジュール
 
-## この技術で何ができるか
+## このステップのゴール
 
 - コードを複数のファイルに分割して管理しやすくできます
 - 関数や定数を別ファイルからインポートして再利用できます
@@ -11,11 +11,11 @@
 - 02-basics を完了していること
 - Live Server で開いていること（`file://` では ES Modules は動作しません）
 
-## ハンズオン
+## 実践
 
 `index.html` を Live Server で開き、`utils.js` と `main.js` にコードを書きながら進めます。
 
-### a. ファイルを分割して責務ごとにコードを管理できるようにする
+### 1. ファイルを分割して責務ごとにコードを管理できるようにする
 
 1つのファイルにすべての処理を書いていると、ファイルが長くなるにつれて見通しが悪くなります。`export` をつけることで、そのファイルの外からも使える関数や定数を定義できます。責務ごとにファイルを分けることで、それぞれが何をするファイルかが明確になります。
 
@@ -29,7 +29,7 @@ export function formatPrice(price) {
 }
 ```
 
-### b. 別ファイルのコードをimportして利用できるようにする
+### 2. 別ファイルのコードをimportして利用できるようにする
 
 `export` しただけでは他のファイルから使えません。`import` することで、分割したファイルの関数や定数を呼び出せるようになります。`import` では `{}` の中に使いたい名前を列挙します（named import）。
 
@@ -49,7 +49,7 @@ document.querySelector("#tax").textContent   = formatPrice(tax);
 document.querySelector("#total").textContent = formatPrice(total);
 ```
 
-### c. モジュールに機能を追加して複数箇所から再利用できるようにする
+### 3. モジュールに機能を追加して複数箇所から再利用できるようにする
 
 モジュールに機能を追加すると、import している側でも使えるようになります。税込価格を計算する関数を `utils.js` に追加して、`main.js` から使ってみましょう。
 
@@ -62,7 +62,7 @@ export function withTax(price) {
 
 `main.js` の import に `withTax` を追加し、計算に使ってみます。
 
-### d. default exportの使い方を理解してnamed exportと使い分けられるようにする
+### 4. default exportの使い方を理解してnamed exportと使い分けられるようにする
 
 named export（`export function`）は複数の関数・定数をひとつのファイルから export するのに使います。一方、`export default` はファイルの「主役」となるひとつのものに使います。import 側では `{}` なしで好きな名前をつけられます。
 

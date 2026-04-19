@@ -1,6 +1,6 @@
 # DOMセレクタ
 
-## この技術で何ができるか
+## このステップのゴール
 
 - HTMLの要素をJavaScriptから取得できます
 - 取得した要素のテキスト・スタイル・クラスを変更できます
@@ -11,11 +11,11 @@
 - 04-callback を完了していること
 - HTMLの基本的な構造（タグ・id・class属性）を知っていること
 
-## ハンズオン
+## 実践
 
 `index.html` を Live Server で開き、`main.js` にコードを書きながら進めます。
 
-### a. DOM操作の対象となる要素を取得できるようにする
+### 1. DOM操作の対象となる要素を取得できるようにする
 
 ブラウザはHTMLを読み込むと、各要素をツリー状のオブジェクト（DOMツリー）として保持します。JavaScriptはこのオブジェクトを通じてHTMLを読み書きします。
 
@@ -31,7 +31,7 @@ console.log(firstItem);
 
 > Console に表示された要素をクリックすると、**Elements** タブで対応するHTMLがハイライトされます。
 
-### b. 複数の要素をまとめて取得・処理できるようにする
+### 2. 複数の要素をまとめて取得・処理できるようにする
 
 `querySelectorAll()` はセレクタに一致するすべての要素をNodeListとして返します。`forEach` で繰り返すと、全件に同じ処理を適用できます。
 
@@ -41,7 +41,7 @@ console.log(items.length);
 items.forEach(item => console.log(item.textContent));
 ```
 
-### c. JavaScriptからページの表示内容を動的に書き換える
+### 3. JavaScriptからページの表示内容を動的に書き換える
 
 取得した要素の `textContent` プロパティを書き換えることで、ページに表示されているテキストをリロードせずに変更できます。これがDOMを通じた動的なUI変更の基本操作です。
 
@@ -50,7 +50,7 @@ const title = document.querySelector("#title");
 title.textContent = "タイトルを変更しました";
 ```
 
-### d. JavaScriptから要素の見た目を動的に制御する
+### 4. JavaScriptから要素の見た目を動的に制御する
 
 `style` プロパティを使うとインラインスタイルを直接変更できます。ユーザーのアクションや状態に応じて見た目を変えたい場面で使います。`classList` を使うとCSSクラスの追加・削除・切り替えができます。
 
@@ -63,7 +63,7 @@ desc.classList.add("highlight");
 console.log(desc.classList);
 ```
 
-### e. 動的に要素を生成してページに追加できるようにする
+### 5. 動的に要素を生成してページに追加できるようにする
 
 `createElement()` で新しい要素を作り、`appendChild()` で既存の要素に追加できます。APIから取得したデータをリスト表示するなど、以降のステップで繰り返し使うパターンです。
 
@@ -82,7 +82,7 @@ list.appendChild(li);
 - `textContent` や `style`、`classList` で要素の内容・見た目を変更できる
 - `createElement` と `appendChild` で新しい要素を動的に追加できる
 
-**次のステップ:** [06 DOMイベント](../06-dom-events/) では、クリックや入力などのユーザー操作に反応する処理の書き方を学びます。
+**次のステップ:** [06 DOMイベント](../06-dom-events/README.md) では、クリックや入力などのユーザー操作に反応する処理の書き方を学びます。
 
 ## 一次情報・参考資料
 
