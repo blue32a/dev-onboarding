@@ -86,7 +86,7 @@ console.log("run() を呼んだ直後");
 
 - JavaScriptは非同期処理を待たずに次の行に進む
 - Promiseを使うと非同期処理の完了後に続く処理を`.then()`でつなげられる
-- `new Promise(resolve, reject)` で任意の処理をPromiseとして表現できる
+- `new Promise((resolve, reject) => { ... })` のように任意の処理をPromiseとして表現できる
 - `async/await` を使うと非同期処理を同期処理のように読みやすく書ける
 
 **次のステップ:** [08 fetch](../08-fetch/README.md) では、`async/await` を活用して外部APIからデータを取得する方法を学びます。
