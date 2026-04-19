@@ -65,7 +65,7 @@ const products = [
   { name: "消しゴム", price: 60  },
 ];
 
-const formatProduct = ({ name, price }) => `${name}: ¥${price}`;
+const formatProduct = (p) => `${p.name}: ¥${p.price}`;
 
 products.forEach((p) => console.log(formatProduct(p)));
 
@@ -99,7 +99,7 @@ console.log("2. 登録の直後");
 - `forEach` / `map` / `filter` はコールバックを受け取る配列メソッド
 - コールバックは今すぐではなく「後で」呼び出されることがある
 
-**次のステップ:** [05 DOMセレクタ](../05-dom-selector/) では、JavaScriptでHTMLの要素を取得・操作する方法を学びます。
+**次のステップ:** [05 DOMセレクタ](../05-dom-selector/README.md) では、JavaScriptでHTMLの要素を取得・操作する方法を学びます。
 
 ## 一次情報・参考資料
 
