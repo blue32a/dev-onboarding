@@ -35,10 +35,30 @@ console.log("終了");
 `setTimeout` のコールバック内にさらにコールバックを書くと、ネストが深くなって読みにくくなります（コールバック地獄）。**Promise** は非同期処理の「結果を将来受け取る約束」を表すオブジェクトで、`.then()` で完了後の処理をつなげて書けます。
 
 ```javascript
-const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 wait(1000).then(() => console.log("1秒経ちました"));
 console.log("wait を呼んだ直後");
+```
+
+Promiseはタイマー以外にも広く使われます。`new Promise()` に `resolve`（成功）と `reject`（失敗）を渡すことで、任意の処理をPromiseとして表現できます。`.catch()` で失敗時の処理を書けます。
+
+以下はデータ取得をPromiseで模した例です。次のステップで学ぶ `fetch()` と同じ `.then()` / `.catch()` のパターンで使えます。
+
+```javascript
+// ユーザー取得を模した例。resolve・rejectは即座に呼ばれるため
+// この例は同期的に解決される。fetch() では非同期で解決される。
+function loadUser(id) {
+  const users = { 1: "Alice", 2: "Bob" };
+  if (users[id]) {
+    return Promise.resolve({ id, name: users[id] });
+  } else {
+    return Promise.reject(new Error("ユーザーが見つかりません"));
+  }
+}
+
+loadUser(1).then((user) => console.log(user.name)); // "Alice"
+loadUser(99).catch((e) => console.log(e.message)); // "ユーザーが見つかりません"
 ```
 
 ### 3. async/awaitで非同期処理を読みやすく書けるようにする
@@ -66,9 +86,10 @@ console.log("run() を呼んだ直後");
 
 - JavaScriptは非同期処理を待たずに次の行に進む
 - Promiseを使うと非同期処理の完了後に続く処理を`.then()`でつなげられる
+- `new Promise(resolve, reject)` で任意の処理をPromiseとして表現できる
 - `async/await` を使うと非同期処理を同期処理のように読みやすく書ける
 
-**次のステップ:** [08 fetch](../08-fetch/) では、`async/await` を活用して外部APIからデータを取得する方法を学びます。
+**次のステップ:** [08 fetch](../08-fetch/README.md) では、`async/await` を活用して外部APIからデータを取得する方法を学びます。
 
 ## 一次情報・参考資料
 
