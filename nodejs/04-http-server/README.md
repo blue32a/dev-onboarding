@@ -96,10 +96,21 @@ server.listen(3000, () => {
 
 POSTリクエストのボディはストリームとして届きます。`data` イベントでチャンクを受け取り、`end` イベントで全体を組み立てます。
 
+`index.html` はLive Server（`http://127.0.0.1:5500`）で配信されるため、Node.jsサーバー（`http://localhost:3000`）とはオリジンが異なります。異なるオリジン間のリクエストはブラウザのCORS制限を受けるため、サーバー側で `Access-Control-Allow-Origin` ヘッダーを返す必要があります。また、`Content-Type: application/json` を含むリクエストの前にブラウザが送るプリフライト（`OPTIONS`）リクエストも処理します。
+
 ```javascript
 import { createServer } from "node:http";
 
 const server = createServer((req, res) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+
+  if (req.method === "OPTIONS") {
+    res.writeHead(204);
+    res.end();
+    return;
+  }
+
   if (req.method === "POST" && req.url === "/api/echo") {
     let body = "";
     req.on("data", (chunk) => {
@@ -121,7 +132,7 @@ server.listen(3000, () => {
 });
 ```
 
-`index.html` をブラウザで開き、ボタンをクリックしてPOSTリクエストを送ります。レスポンスがページに表示されることを確認します。
+`node main.js` でサーバーを起動し、このステップに用意されている `index.html` をLive Serverで開きます。ボタンをクリックしてPOSTリクエストを送り、レスポンスがページに表示されることを確認します。
 
 ## まとめ
 
