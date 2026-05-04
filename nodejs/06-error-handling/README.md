@@ -87,7 +87,7 @@ emitter.emit("error", new Error("エラーが発生しました"));
 
 ### 3. 未処理の Promise エラーを検出する
 
-`await` し忘れたPromiseがRejectされると、エラーが握りつぶされる場合があります。`unhandledRejection` イベントで検出できます。
+`await` し忘れたPromiseがRejectされると、エラーがどこにも捕捉されないままプロセスが終了します。`unhandledRejection` イベントを登録することで、終了前にログ出力などの後処理ができます。
 
 ```javascript
 process.on("unhandledRejection", (reason) => {
@@ -98,8 +98,6 @@ process.on("unhandledRejection", (reason) => {
 // await を忘れた Promise
 Promise.reject(new Error("このエラーは処理されない"));
 ```
-
-現代のNode.jsでは未処理のRejectionはデフォルトでプロセスを終了させます。`unhandledRejection` を登録することで、終了前にログ出力などの後処理ができます。
 
 ## まとめ
 
