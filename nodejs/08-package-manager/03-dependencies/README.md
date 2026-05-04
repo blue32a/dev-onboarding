@@ -2,8 +2,8 @@
 
 ## このステップのゴール
 
-- `dependencies` と `devDependencies` の違いを説明できます
-- semver の表記（`^`・`~`）を読んで意味を説明できます
+- 用途に応じて `dependencies` と `devDependencies` を使い分けてインストールできます
+- semver の表記（`^`・`~`）を読んで更新範囲を判断できます
 - `npm install --save-dev` で開発用パッケージをインストールできます
 
 ## 前提知識・環境

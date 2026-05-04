@@ -2,7 +2,7 @@
 
 ## このステップのゴール
 
-- Node.js固有のエラーコード（`ENOENT` など）を理解して対処できます
+- Node.js固有のエラーコード（`ENOENT` など）を読み取って状況に応じた処理を書けます
 - `EventEmitter` の `error` イベントを適切に処理できます
 - `unhandledRejection` で未処理のPromiseエラーを検出できます
 

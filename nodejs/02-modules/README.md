@@ -4,7 +4,7 @@
 
 - CommonJSの `require` / `module.exports` でモジュールを分割できます
 - Node.js組み込みモジュールをインポートして使えます
-- ES ModulesとCommonJSの違いと使い分けを理解できます
+- ES ModulesとCommonJSの違いを判断して使い分けられます
 
 ## 前提知識・環境
 

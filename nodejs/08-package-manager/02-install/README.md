@@ -3,8 +3,8 @@
 ## このステップのゴール
 
 - `npm install` でパッケージをインストールしてコードから使えます
-- `node_modules` と `package-lock.json` の役割を説明できます
-- `node_modules` を `.gitignore` に追加する理由を説明できます
+- `node_modules` と `package-lock.json` の役割を理解して適切に管理できます
+- `.gitignore` を設定して `node_modules` をGitの管理対象から除外できます
 
 ## 前提知識・環境
 

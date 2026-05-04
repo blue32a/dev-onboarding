@@ -2,7 +2,7 @@
 
 ## このステップのゴール
 
-- Readable・Writableストリームの役割を説明できます
+- 大きなファイルをメモリに乗せずに効率よく処理できます
 - `createReadStream` / `createWriteStream` でファイルをストリームで処理できます
 - `pipeline` でストリームを安全に接続できます
 
