@@ -30,4 +30,5 @@
 
 | 技術 | 説明 |
 | --- | --- |
-| [JavaScript](./javascript/) | Webブラウザ上で動作するプログラミング言語。フロントエンド開発の基礎 |
+| [JavaScript](./javascript/README.md) | Webブラウザ上で動作するプログラミング言語。フロントエンド開発の基礎 |
+| [Node.js](./nodejs/README.md) | JavaScriptをブラウザの外で実行するランタイム。サーバーサイド・CLIツール開発の基礎 |

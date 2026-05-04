@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>POST リクエストのテスト</title>
+</head>
+<body>
+  <button id="btn">POSTリクエストを送る</button>
+  <pre id="result"></pre>
+  <script>
+    document.getElementById("btn").addEventListener("click", async () => {
+      const res = await fetch("http://localhost:3000/api/echo", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: "hello" }),
+      });
+      const data = await res.json();
+      document.getElementById("result").textContent = JSON.stringify(data, null, 2);
+    });
+  </script>
+</body>
+</html>
