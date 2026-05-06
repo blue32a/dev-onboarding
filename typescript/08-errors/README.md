@@ -43,7 +43,7 @@ const user: User = {
 
 ```
 error TS2322: Type 'string' is not assignable to type 'number'.
-  Object literal may only specify known properties, and 'age' exists in type 'User'.
+  The expected type comes from property 'age' which is declared here on type 'User'
 ```
 
 ### 2. "Property 'X' does not exist on type 'Y'"
