@@ -32,3 +32,4 @@
 | --- | --- |
 | [JavaScript](./javascript/README.md) | Webブラウザ上で動作するプログラミング言語。フロントエンド開発の基礎 |
 | [Node.js](./nodejs/README.md) | JavaScriptをブラウザの外で実行するランタイム。サーバーサイド・CLIツール開発の基礎 |
+| [TypeScript](./typescript/README.md) | JavaScriptに静的型付けを追加した言語。型によるバグの早期発見とコードの意図の明確化 |
