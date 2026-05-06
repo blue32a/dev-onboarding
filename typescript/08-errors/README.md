@@ -126,5 +126,4 @@ error TS2322: Type 'string' is not assignable to type 'number'.
 
 ## 一次情報・参考資料
 
-- [TypeScript: Error Reference](https://www.typescriptlang.org/docs/handbook/2/types-from-types.html)
 - [TypeScript Error Translator（エラーを日本語で確認できるツール）](https://ts-error-translator.vercel.app/)
