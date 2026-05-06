@@ -11,7 +11,7 @@
 
 ## 実践
 
-`main.ts` にコードを書きながら進めます。意図的にエラーを起こして `npx tsc main.ts` でエラーを確認します。
+`main.ts` にコードを書きながら進めます。意図的にエラーを起こして `npx tsc` でエラーを確認します。
 
 ### 1. "Type 'X' is not assignable to type 'Y'"
 
